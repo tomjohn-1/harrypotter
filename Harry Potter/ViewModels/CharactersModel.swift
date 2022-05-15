@@ -13,7 +13,8 @@ class CharactersModel: ObservableObject {
     @Published var filteredCharacters: [Character] = []
     @Published var errorMessage: String?
     
-    @Published var houseSelection: Houses = .Gryffindor
+    @Published var houseSelection: Houses = .All
+    @Published var statusSelection: Status = .All
     
     init() {
 //        getHPData()
@@ -57,7 +58,19 @@ class CharactersModel: ObservableObject {
         
     }
     
+    func filterCharactersByNeither() {
+        
+        self.filteredCharacters = self.filteredCharacters.filter({ character in
+            character.hogwartsStaff == false && character.hogwartsStudent == false
+        })
+        
+    }
+    
     func filterCharactersByHouse(house: String) {
+        
+        if house == "All" {
+            return
+        }
         
         self.filteredCharacters = self.filteredCharacters.filter({ character in
             character.house == house

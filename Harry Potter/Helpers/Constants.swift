@@ -14,3 +14,10 @@ enum Houses: String {
     case Hufflepuff = "Hufflepuff"
     case Ravenclaw = "Ravenclaw"
 }
+
+enum Status {
+    case All
+    case Student
+    case Staff
+    case Neither
+}

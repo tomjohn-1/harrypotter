@@ -21,28 +21,31 @@ struct ContentView: View {
                 HStack {
                 
                     Button {
-                        vm.filterCharactersByHouse(house: "Gryffindor")
+                        vm.filterCharactersByHouse(house: vm.houseSelection.rawValue)
                     } label: {
                         Text("House")
                             .font(.title)
                     }
                     
                     Button {
-                        vm.filterCharactersByStudent()
+                        if vm.statusSelection == Status.Student {
+                            vm.filterCharactersByStudent()
+                        }
+                        else if vm.statusSelection == Status.Staff {
+                            vm.filterCharactersByStaff()
+                        }
+                        else if vm.statusSelection == Status.Neither {
+                            vm.filterCharactersByNeither()
+                        }
                     } label: {
                         Text("Student")
                             .font(.title)
                     }
                     
                     Button {
-                        vm.filterCharactersByStaff()
-                    } label: {
-                        Text("Staff")
-                            .font(.title)
-                    }
-                    
-                    Button {
                         vm.clearFilters()
+                        vm.houseSelection = .All
+                        vm.statusSelection = .All
                     } label: {
                         Text("Clear")
                             .font(.title)
@@ -53,6 +56,8 @@ struct ContentView: View {
                 HStack {
                     
                     Picker(selection: $vm.houseSelection) {
+                        Text("All")
+                            .tag(Houses.All)
                         Text("Gryffindor")
                             .tag(Houses.Gryffindor)
                         Text("Slytherin")
@@ -65,7 +70,18 @@ struct ContentView: View {
                         Text("House Picker")
                     }
 
-                    
+                    Picker(selection: $vm.statusSelection) {
+                        Text("All")
+                            .tag(Status.All)
+                        Text("Student")
+                            .tag(Status.Student)
+                        Text("Staff")
+                            .tag(Status.Staff)
+                        Text("Neither")
+                            .tag(Status.Neither)
+                    } label: {
+                        Text("Status Picker")
+                    }
                 }
                 
                 ForEach(0..<vm.filteredCharacters.count, id: \.self) { i in
