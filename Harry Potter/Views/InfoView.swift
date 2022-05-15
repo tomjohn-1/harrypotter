@@ -9,18 +9,19 @@ import SwiftUI
 
 struct InfoView: View {
     
-    
+    var character: Character
     
     var body: some View {
         
-        VStack {
+        VStack (alignment: .leading, spacing: 10) {
             
             Rectangle()
                 .foregroundColor(.gray)
                 .frame(height: 200)
             
             Group {
-                Text("name")
+                Text(character.name)
+                    .bold()
                 Text("alterante_name")
                 Text("species")
                 Text("gender")
@@ -31,6 +32,8 @@ struct InfoView: View {
                 Text("eyeColour")
                 Text("hair colour")
             }
+            .font(Font.system(size: 20))
+            .padding(.horizontal)
             
             Group {
                 Text("wand")
@@ -41,12 +44,17 @@ struct InfoView: View {
                 Text("alternate_actors")
                 Text("alive")
             }
+            .font(Font.system(size: 20))
+            .padding(.horizontal)
+            
+            Spacer()
         }
+        .ignoresSafeArea()
     }
 }
 
-struct InfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoView()
-    }
-}
+//struct InfoView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        InfoView(character: Character()
+//    }
+//}

@@ -11,15 +11,25 @@ struct ContentView: View {
     
     @ObservedObject var vm = CharactersModel()
     @State var infoShowing = false
+    @State var characterToShow: Character?
     
     var body: some View {
         
         ScrollView {
             LazyVStack (alignment: .leading) {
                 
-                ForEach(0..<vm.characters.count, id: \.self) { i in
+                Button {
+                    vm.filterCharacters(house: "Gryffindor")
+                } label: {
+                    Text("Filter")
+                        .font(.title)
+                }
+
+                
+                ForEach(0..<vm.filteredCharacters.count, id: \.self) { i in
                     
                     Button {
+                        characterToShow = vm.characters[i]
                         infoShowing = true
                     } label: {
                         ZStack {
@@ -28,7 +38,7 @@ struct ContentView: View {
                                 .frame(height: 100)
                             
                             HStack {
-                                Text(vm.characters[i].name)
+                                Text(vm.filteredCharacters[i].name)
                                     .foregroundColor(.black)
                                     .padding()
                                 Spacer()
@@ -43,11 +53,14 @@ struct ContentView: View {
         }
         .task {
             await vm.getData()
+            if !vm.characters.isEmpty {
+                characterToShow = vm.characters[0]
+            }
         }
         .sheet(isPresented: $infoShowing) {
             
         } content: {
-            InfoView()
+            InfoView(character: characterToShow!)
         }
 
     }

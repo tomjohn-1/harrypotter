@@ -10,6 +10,7 @@ import Foundation
 class CharactersModel: ObservableObject {
     
     @Published var characters: [Character] = []
+    @Published var filteredCharacters: [Character] = []
     @Published var errorMessage: String?
     
     init() {
@@ -31,6 +32,13 @@ class CharactersModel: ObservableObject {
             self.errorMessage = error.localizedDescription
             print(errorMessage)
         }
+    }
+    
+    func filterCharacters(house: String) {
+        
+        self.filteredCharacters = self.characters.filter({ character in
+            character.house == house
+        })
     }
     
     func getHPData() {
