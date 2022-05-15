@@ -8,6 +8,9 @@
 import Foundation
 
 class Character: Decodable {
+    
+    var imageData: Data?
+    
     var name: String
     var alternate_names: [String]
     var species: String

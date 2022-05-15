@@ -15,10 +15,16 @@ struct InfoView: View {
         
         VStack (alignment: .leading, spacing: 10) {
             
-            Rectangle()
-                .foregroundColor(.gray)
-                .frame(height: 200)
-            
+            ZStack {
+                Rectangle()
+                    .foregroundColor(.gray)
+                    .frame(height: 200)
+                
+                if character.imageData != nil {
+                    Image(uiImage: UIImage(data: character.imageData!) ?? UIImage())
+                }
+                
+            }
             Group {
                 Text(character.name)
                     .bold()

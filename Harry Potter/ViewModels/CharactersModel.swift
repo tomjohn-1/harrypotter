@@ -40,12 +40,38 @@ class CharactersModel: ObservableObject {
                 return c1.name < c2.name
             }
             
+            for c in self.characters {
+                do {
+                    try await c.imageData = self.getImageData(urlString: c.image)
+                }
+                catch {
+                    
+                }
+            }
             self.filteredCharacters = self.characters
         }
         catch {
             self.errorMessage = error.localizedDescription
             print(errorMessage)
         }
+    }
+    
+    func getImageData(urlString: String) async throws -> Data {
+        
+        let url = URL(string: urlString)
+        
+        guard url != nil else {
+            return Data()
+        }
+        
+        do {
+            let (data, response) = try await URLSession.shared.data(from: url!)
+            return data
+        }
+        catch {
+            
+        }
+        return Data()
     }
     
     func filterCharactersByStaff() {
