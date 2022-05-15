@@ -10,5 +10,5 @@ import Foundation
 class Wand: Decodable {
     var wood: String
     var core: String
-    var length: Int
+//    var length: Int?
 }

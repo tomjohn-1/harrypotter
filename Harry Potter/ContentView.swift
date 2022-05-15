@@ -12,19 +12,20 @@ struct ContentView: View {
     @ObservedObject var vm = CharactersModel()
     
     var body: some View {
-        VStack {
-            
-            Text("Hello world")
-            
-            ForEach(0..<vm.characters.count, id: \.self) { i in
+        
+        ScrollView {
+            LazyVStack {
                 
-                Text(vm.characters[i].name)
+                ForEach(0..<vm.characters.count, id: \.self) { i in
+                    
+                    Text(vm.characters[i].name)
+                    
+                }
                 
             }
-            
         }
         .task {
-            await vm.getData()
+//            await vm.getData()
         }
     }
 }

@@ -13,7 +13,7 @@ class CharactersModel: ObservableObject {
     @Published var errorMessage: String?
     
     init() {
-        
+        getHPData()
     }
     
     @MainActor
@@ -33,4 +33,39 @@ class CharactersModel: ObservableObject {
         }
     }
     
+    func getHPData() {
+        
+        let urlString = "http://hp-api.herokuapp.com/api/characters"
+        
+        let url = URL(string: urlString)
+        
+        print(url)
+        
+        guard url != nil else {
+            return
+        }
+        
+        let request = URLRequest(url: url!)
+        
+        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
+            
+            guard error == nil, data != nil else {
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let result = try decoder.decode([Character].self, from: data!)
+                
+                DispatchQueue.main.async {
+                    self.characters = result
+                }
+                
+            }
+            catch {
+                print(error)
+            }
+        }
+        dataTask.resume()
+    }
 }
