@@ -16,6 +16,12 @@ struct ContentView: View {
             
             Text("Hello world")
             
+            ForEach(0..<vm.characters.count, id: \.self) { i in
+                
+                Text(vm.characters[i].name)
+                
+            }
+            
         }
         .task {
             await vm.getData()

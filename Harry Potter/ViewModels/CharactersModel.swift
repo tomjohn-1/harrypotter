@@ -25,9 +25,11 @@ class CharactersModel: ObservableObject {
         
         do {
             self.characters = try await apiService.getJSON()
+            print(characters[0].name)
         }
         catch {
             self.errorMessage = error.localizedDescription
+            print(errorMessage)
         }
     }
     
