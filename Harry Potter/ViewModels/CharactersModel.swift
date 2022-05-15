@@ -16,6 +16,8 @@ class CharactersModel: ObservableObject {
     @Published var houseSelection: Houses = .All
     @Published var statusSelection: Status = .All
     
+    @Published var isLoading = true
+    
     init() {
 //        getHPData()
     }
@@ -26,6 +28,10 @@ class CharactersModel: ObservableObject {
         let url = "http://hp-api.herokuapp.com/api/characters"
         
         let apiService = APIService(urlString: url)
+        
+        defer {
+            isLoading.toggle()
+        }
         
         do {
             self.characters = try await apiService.getJSON()

@@ -16,103 +16,101 @@ struct ContentView: View {
     var body: some View {
         
         ScrollView {
-            LazyVStack (alignment: .leading) {
-                
-                HStack {
-                
-                    Button {
-                        vm.filterCharactersByHouse(house: vm.houseSelection.rawValue)
-                    } label: {
-                        Text("House")
-                            .font(.title)
-                    }
+            if vm.isLoading {
+                ProgressView()
+            }
+            else {
+                LazyVStack (alignment: .leading) {
                     
-                    Button {
-                        if vm.statusSelection == Status.Student {
-                            vm.filterCharactersByStudent()
+                    HStack {
+                        
+                        Picker(selection: $vm.houseSelection) {
+                            Text("All")
+                                .tag(Houses.All)
+                            Text("Gryffindor")
+                                .tag(Houses.Gryffindor)
+                            Text("Slytherin")
+                                .tag(Houses.Slytherin)
+                            Text("Hufflepuff")
+                                .tag(Houses.Hufflepuff)
+                            Text("Ravenclaw")
+                                .tag(Houses.Ravenclaw)
+                        } label: {
+                            Text("House Picker")
                         }
-                        else if vm.statusSelection == Status.Staff {
-                            vm.filterCharactersByStaff()
-                        }
-                        else if vm.statusSelection == Status.Neither {
-                            vm.filterCharactersByNeither()
-                        }
-                    } label: {
-                        Text("Student")
-                            .font(.title)
-                    }
-                    
-                    Button {
-                        vm.clearFilters()
-                        vm.houseSelection = .All
-                        vm.statusSelection = .All
-                    } label: {
-                        Text("Clear")
-                            .font(.title)
-                    }
-                    
-                }
-                
-                HStack {
-                    
-                    Picker(selection: $vm.houseSelection) {
-                        Text("All")
-                            .tag(Houses.All)
-                        Text("Gryffindor")
-                            .tag(Houses.Gryffindor)
-                        Text("Slytherin")
-                            .tag(Houses.Slytherin)
-                        Text("Hufflepuff")
-                            .tag(Houses.Hufflepuff)
-                        Text("Ravenclaw")
-                            .tag(Houses.Ravenclaw)
-                    } label: {
-                        Text("House Picker")
-                    }
 
-                    Picker(selection: $vm.statusSelection) {
-                        Text("All")
-                            .tag(Status.All)
-                        Text("Student")
-                            .tag(Status.Student)
-                        Text("Staff")
-                            .tag(Status.Staff)
-                        Text("Neither")
-                            .tag(Status.Neither)
-                    } label: {
-                        Text("Status Picker")
-                    }
-                }
-                
-                ForEach(0..<vm.filteredCharacters.count, id: \.self) { i in
-                    
-                    Button {
-                        characterToShow = vm.characters[i]
-                        infoShowing = true
-                    } label: {
-                        ZStack {
-                            Rectangle()
-                                .foregroundColor(.white)
-                                .frame(height: 100)
+                        Picker(selection: $vm.statusSelection) {
+                            Text("All")
+                                .tag(Status.All)
+                            Text("Student")
+                                .tag(Status.Student)
+                            Text("Staff")
+                                .tag(Status.Staff)
+                            Text("Neither")
+                                .tag(Status.Neither)
+                        } label: {
+                            Text("Status Picker")
+                        }
+                        
+                        Button {
+                            if vm.statusSelection == Status.Student {
+                                vm.filterCharactersByStudent()
+                            }
+                            else if vm.statusSelection == Status.Staff {
+                                vm.filterCharactersByStaff()
+                            }
+                            else if vm.statusSelection == Status.Neither {
+                                vm.filterCharactersByNeither()
+                            }
                             
-                            HStack {
-                                Text(vm.filteredCharacters[i].name)
-                                    .foregroundColor(.black)
-                                    .padding()
-                                Spacer()
+                            vm.filterCharactersByHouse(house: vm.houseSelection.rawValue)
+                        } label: {
+                            Text("Filter")
+                                .font(.title)
+                        }
+                        
+                        Button {
+                            vm.clearFilters()
+                            vm.houseSelection = .All
+                            vm.statusSelection = .All
+                        } label: {
+                            Text("Clear")
+                                .font(.title)
+                        }
+                    }
+                    
+                    ForEach(0..<vm.filteredCharacters.count, id: \.self) { i in
+                        
+                        Button {
+                            characterToShow = vm.filteredCharacters[i]
+                            vm.isLoading.toggle()
+                            vm.isLoading.toggle()
+                            infoShowing = true
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(.white)
+                                    .frame(height: 100)
+                                
+                                HStack {
+                                    Text(vm.filteredCharacters[i].name)
+                                        .foregroundColor(.black)
+                                        .padding()
+                                    Spacer()
+                                }
                             }
                         }
+                        Divider()
+                        
                     }
-                    Divider()
                     
                 }
-                
             }
         }
         .task {
             await vm.getData()
-            if !vm.characters.isEmpty {
-                characterToShow = vm.characters[0]
+            if !vm.filteredCharacters.isEmpty {
+                characterToShow = vm.filteredCharacters[0]
             }
         }
         .sheet(isPresented: $infoShowing) {
