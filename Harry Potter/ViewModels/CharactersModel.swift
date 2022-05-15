@@ -13,6 +13,8 @@ class CharactersModel: ObservableObject {
     @Published var filteredCharacters: [Character] = []
     @Published var errorMessage: String?
     
+    @Published var houseSelection: Houses = .Gryffindor
+    
     init() {
 //        getHPData()
     }
@@ -26,7 +28,12 @@ class CharactersModel: ObservableObject {
         
         do {
             self.characters = try await apiService.getJSON()
-            print(characters[0].name)
+            
+            self.characters.sort { c1, c2 in
+                return c1.name < c2.name
+            }
+            
+            self.filteredCharacters = self.characters
         }
         catch {
             self.errorMessage = error.localizedDescription
@@ -34,11 +41,31 @@ class CharactersModel: ObservableObject {
         }
     }
     
-    func filterCharacters(house: String) {
+    func filterCharactersByStaff() {
         
-        self.filteredCharacters = self.characters.filter({ character in
+        self.filteredCharacters = self.filteredCharacters.filter({ character in
+            character.hogwartsStaff == true
+        })
+        
+    }
+    
+    func filterCharactersByStudent() {
+        
+        self.filteredCharacters = self.filteredCharacters.filter({ character in
+            character.hogwartsStudent == true
+        })
+        
+    }
+    
+    func filterCharactersByHouse(house: String) {
+        
+        self.filteredCharacters = self.filteredCharacters.filter({ character in
             character.house == house
         })
+    }
+    
+    func clearFilters() {
+        self.filteredCharacters = self.characters
     }
     
     func getHPData() {

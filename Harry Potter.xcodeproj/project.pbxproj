@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F42ADE332831954600E1DE12 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42ADE322831954600E1DE12 /* Constants.swift */; };
 		F46F1DFF282D6D610079E65B /* Harry_PotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F1DFE282D6D610079E65B /* Harry_PotterApp.swift */; };
 		F46F1E01282D6D610079E65B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F1E00282D6D610079E65B /* ContentView.swift */; };
 		F46F1E03282D6D650079E65B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46F1E02282D6D650079E65B /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F42ADE322831954600E1DE12 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F46F1DFB282D6D610079E65B /* Harry Potter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Harry Potter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46F1DFE282D6D610079E65B /* Harry_PotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harry_PotterApp.swift; sourceTree = "<group>"; };
 		F46F1E00282D6D610079E65B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				F4E9496828315E540032D7F0 /* APIService.swift */,
+				F42ADE322831954600E1DE12 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 				F46F1DFF282D6D610079E65B /* Harry_PotterApp.swift in Sources */,
 				F4E9496E283161F10032D7F0 /* Character.swift in Sources */,
 				F4E9497728316EF00032D7F0 /* InfoView.swift in Sources */,
+				F42ADE332831954600E1DE12 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

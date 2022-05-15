@@ -18,13 +18,55 @@ struct ContentView: View {
         ScrollView {
             LazyVStack (alignment: .leading) {
                 
-                Button {
-                    vm.filterCharacters(house: "Gryffindor")
-                } label: {
-                    Text("Filter")
-                        .font(.title)
+                HStack {
+                
+                    Button {
+                        vm.filterCharactersByHouse(house: "Gryffindor")
+                    } label: {
+                        Text("House")
+                            .font(.title)
+                    }
+                    
+                    Button {
+                        vm.filterCharactersByStudent()
+                    } label: {
+                        Text("Student")
+                            .font(.title)
+                    }
+                    
+                    Button {
+                        vm.filterCharactersByStaff()
+                    } label: {
+                        Text("Staff")
+                            .font(.title)
+                    }
+                    
+                    Button {
+                        vm.clearFilters()
+                    } label: {
+                        Text("Clear")
+                            .font(.title)
+                    }
+                    
                 }
+                
+                HStack {
+                    
+                    Picker(selection: $vm.houseSelection) {
+                        Text("Gryffindor")
+                            .tag(Houses.Gryffindor)
+                        Text("Slytherin")
+                            .tag(Houses.Slytherin)
+                        Text("Hufflepuff")
+                            .tag(Houses.Hufflepuff)
+                        Text("Ravenclaw")
+                            .tag(Houses.Ravenclaw)
+                    } label: {
+                        Text("House Picker")
+                    }
 
+                    
+                }
                 
                 ForEach(0..<vm.filteredCharacters.count, id: \.self) { i in
                     
