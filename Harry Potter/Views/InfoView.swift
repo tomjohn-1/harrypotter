@@ -8,8 +8,40 @@
 import SwiftUI
 
 struct InfoView: View {
+    
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack {
+            
+            Rectangle()
+                .foregroundColor(.gray)
+                .frame(height: 200)
+            
+            Group {
+                Text("name")
+                Text("alterante_name")
+                Text("species")
+                Text("gender")
+                Text("house")
+                Text("dateOfBirth")
+                Text("wizard")
+                Text("ancestry")
+                Text("eyeColour")
+                Text("hair colour")
+            }
+            
+            Group {
+                Text("wand")
+                Text("patronus")
+                Text("hogwarts student")
+                Text("staff")
+                Text("actor")
+                Text("alternate_actors")
+                Text("alive")
+            }
+        }
     }
 }
 
