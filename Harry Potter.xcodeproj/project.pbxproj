@@ -11,6 +11,10 @@
 		F46F1E01282D6D610079E65B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F1E00282D6D610079E65B /* ContentView.swift */; };
 		F46F1E03282D6D650079E65B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46F1E02282D6D650079E65B /* Assets.xcassets */; };
 		F46F1E06282D6D650079E65B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46F1E05282D6D650079E65B /* Preview Assets.xcassets */; };
+		F4E9496928315E540032D7F0 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9496828315E540032D7F0 /* APIService.swift */; };
+		F4E9496E283161F10032D7F0 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9496D283161F10032D7F0 /* Character.swift */; };
+		F4E949702831633E0032D7F0 /* Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9496F2831633E0032D7F0 /* Wand.swift */; };
+		F4E94973283163A50032D7F0 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E94972283163A50032D7F0 /* CharactersModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		F46F1E00282D6D610079E65B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F46F1E02282D6D650079E65B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F46F1E05282D6D650079E65B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F4E9496828315E540032D7F0 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		F4E9496D283161F10032D7F0 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		F4E9496F2831633E0032D7F0 /* Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wand.swift; sourceTree = "<group>"; };
+		F4E94972283163A50032D7F0 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,9 @@
 			children = (
 				F46F1DFE282D6D610079E65B /* Harry_PotterApp.swift */,
 				F46F1E00282D6D610079E65B /* ContentView.swift */,
+				F4E94971283163880032D7F0 /* ViewModels */,
+				F4E9496C2831606C0032D7F0 /* Models */,
+				F4E9496728315E3A0032D7F0 /* Helpers */,
 				F46F1E02282D6D650079E65B /* Assets.xcassets */,
 				F46F1E04282D6D650079E65B /* Preview Content */,
 			);
@@ -65,6 +76,31 @@
 				F46F1E05282D6D650079E65B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F4E9496728315E3A0032D7F0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F4E9496828315E540032D7F0 /* APIService.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F4E9496C2831606C0032D7F0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F4E9496D283161F10032D7F0 /* Character.swift */,
+				F4E9496F2831633E0032D7F0 /* Wand.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F4E94971283163880032D7F0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F4E94972283163A50032D7F0 /* CharactersModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +174,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46F1E01282D6D610079E65B /* ContentView.swift in Sources */,
+				F4E9496928315E540032D7F0 /* APIService.swift in Sources */,
+				F4E949702831633E0032D7F0 /* Wand.swift in Sources */,
+				F4E94973283163A50032D7F0 /* CharactersModel.swift in Sources */,
 				F46F1DFF282D6D610079E65B /* Harry_PotterApp.swift in Sources */,
+				F4E9496E283161F10032D7F0 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

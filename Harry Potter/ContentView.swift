@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject var vm = CharactersModel()
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            
+            Text("Hello world")
+            
+        }
+        .task {
+            await vm.getData()
+        }
     }
 }
 
