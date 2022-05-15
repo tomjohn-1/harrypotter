@@ -13,7 +13,7 @@ class CharactersModel: ObservableObject {
     @Published var errorMessage: String?
     
     init() {
-        getHPData()
+//        getHPData()
     }
     
     @MainActor
@@ -60,7 +60,7 @@ class CharactersModel: ObservableObject {
                 DispatchQueue.main.async {
                     self.characters = result
                 }
-                
+//
             }
             catch {
                 print(error)

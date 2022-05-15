@@ -15,6 +15,7 @@
 		F4E9496E283161F10032D7F0 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9496D283161F10032D7F0 /* Character.swift */; };
 		F4E949702831633E0032D7F0 /* Wand.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9496F2831633E0032D7F0 /* Wand.swift */; };
 		F4E94973283163A50032D7F0 /* CharactersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E94972283163A50032D7F0 /* CharactersModel.swift */; };
+		F4E9497728316EF00032D7F0 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E9497628316EF00032D7F0 /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F4E9496F2831633E0032D7F0 /* Wand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wand.swift; sourceTree = "<group>"; };
 		F4E94972283163A50032D7F0 /* CharactersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersModel.swift; sourceTree = "<group>"; };
 		F4E94974283167090032D7F0 /* Harry-Potter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Harry-Potter-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F4E9497628316EF00032D7F0 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,12 +62,12 @@
 		F46F1DFD282D6D610079E65B /* Harry Potter */ = {
 			isa = PBXGroup;
 			children = (
-				F4E94974283167090032D7F0 /* Harry-Potter-Info.plist */,
 				F46F1DFE282D6D610079E65B /* Harry_PotterApp.swift */,
-				F46F1E00282D6D610079E65B /* ContentView.swift */,
+				F4E9497528316ED90032D7F0 /* Views */,
 				F4E94971283163880032D7F0 /* ViewModels */,
 				F4E9496C2831606C0032D7F0 /* Models */,
 				F4E9496728315E3A0032D7F0 /* Helpers */,
+				F4E94974283167090032D7F0 /* Harry-Potter-Info.plist */,
 				F46F1E02282D6D650079E65B /* Assets.xcassets */,
 				F46F1E04282D6D650079E65B /* Preview Content */,
 			);
@@ -103,6 +105,15 @@
 				F4E94972283163A50032D7F0 /* CharactersModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F4E9497528316ED90032D7F0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F46F1E00282D6D610079E65B /* ContentView.swift */,
+				F4E9497628316EF00032D7F0 /* InfoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +192,7 @@
 				F4E94973283163A50032D7F0 /* CharactersModel.swift in Sources */,
 				F46F1DFF282D6D610079E65B /* Harry_PotterApp.swift in Sources */,
 				F4E9496E283161F10032D7F0 /* Character.swift in Sources */,
+				F4E9497728316EF00032D7F0 /* InfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
