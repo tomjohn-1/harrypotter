@@ -22,8 +22,11 @@ struct InfoView: View {
                 
                 if character.imageData != nil {
                     Image(uiImage: UIImage(data: character.imageData!) ?? UIImage())
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 200)
+                        .clipped()
                 }
-                
             }
             Group {
                 Text(character.name)

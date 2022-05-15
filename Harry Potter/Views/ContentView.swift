@@ -22,7 +22,7 @@ struct ContentView: View {
             else {
                 LazyVStack (alignment: .leading) {
                     
-                    HStack {
+                    HStack (spacing: 20) {
                         
                         Picker(selection: $vm.houseSelection) {
                             Text("All")
@@ -38,6 +38,9 @@ struct ContentView: View {
                         } label: {
                             Text("House Picker")
                         }
+                        .font(.title)
+                        
+                        Divider()
 
                         Picker(selection: $vm.statusSelection) {
                             Text("All")
@@ -51,6 +54,9 @@ struct ContentView: View {
                         } label: {
                             Text("Status Picker")
                         }
+                        .font(.title)
+                        
+                        Divider()
                         
                         Button {
                             if vm.statusSelection == Status.Student {
@@ -69,6 +75,8 @@ struct ContentView: View {
                                 .font(.title)
                         }
                         
+                        Divider()
+                        
                         Button {
                             vm.clearFilters()
                             vm.houseSelection = .All
@@ -78,6 +86,8 @@ struct ContentView: View {
                                 .font(.title)
                         }
                     }
+                    .foregroundColor(.black)
+                    .padding()
                     
                     ForEach(0..<vm.filteredCharacters.count, id: \.self) { i in
                         
