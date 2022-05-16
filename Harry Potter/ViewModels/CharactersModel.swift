@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class CharactersModel: ObservableObject {
     
@@ -19,7 +20,35 @@ class CharactersModel: ObservableObject {
     @Published var isLoading = true
     
     init() {
-//        getHPData()
+        alamoData()
+    }
+    
+    func alamoData() {
+        
+        let urlString = "http://hp-api.herokuapp.com/api/characters"
+        
+        let url = URL(string: urlString)
+        
+        guard url != nil else {
+            return
+        }
+        
+        NetworkingClient.execute(url!) { result, error in
+            
+            guard error == nil, result != nil else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self.characters = result!
+                
+                self.characters.sort { c1, c2 in
+                    return c1.name < c2.name
+                }
+                
+                self.filteredCharacters = self.characters
+            }
+        }
     }
     
     @MainActor
@@ -111,41 +140,5 @@ class CharactersModel: ObservableObject {
     
     func clearFilters() {
         self.filteredCharacters = self.characters
-    }
-    
-    func getHPData() {
-        
-        let urlString = "http://hp-api.herokuapp.com/api/characters"
-        
-        let url = URL(string: urlString)
-        
-        print(url)
-        
-        guard url != nil else {
-            return
-        }
-        
-        let request = URLRequest(url: url!)
-        
-        let dataTask = URLSession.shared.dataTask(with: request) { data, response, error in
-            
-            guard error == nil, data != nil else {
-                return
-            }
-            
-            do {
-                let decoder = JSONDecoder()
-                let result = try decoder.decode([Character].self, from: data!)
-                
-                DispatchQueue.main.async {
-                    self.characters = result
-                }
-//
-            }
-            catch {
-                print(error)
-            }
-        }
-        dataTask.resume()
     }
 }

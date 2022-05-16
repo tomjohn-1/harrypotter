@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F42ADE332831954600E1DE12 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42ADE322831954600E1DE12 /* Constants.swift */; };
+		F42ADE362832255000E1DE12 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F42ADE352832255000E1DE12 /* Alamofire */; };
+		F42ADE38283225E800E1DE12 /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42ADE37283225E800E1DE12 /* NetworkingClient.swift */; };
 		F46F1DFF282D6D610079E65B /* Harry_PotterApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F1DFE282D6D610079E65B /* Harry_PotterApp.swift */; };
 		F46F1E01282D6D610079E65B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46F1E00282D6D610079E65B /* ContentView.swift */; };
 		F46F1E03282D6D650079E65B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46F1E02282D6D650079E65B /* Assets.xcassets */; };
@@ -21,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		F42ADE322831954600E1DE12 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F42ADE37283225E800E1DE12 /* NetworkingClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingClient.swift; sourceTree = "<group>"; };
 		F46F1DFB282D6D610079E65B /* Harry Potter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Harry Potter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46F1DFE282D6D610079E65B /* Harry_PotterApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Harry_PotterApp.swift; sourceTree = "<group>"; };
 		F46F1E00282D6D610079E65B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42ADE362832255000E1DE12 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +93,7 @@
 			children = (
 				F4E9496828315E540032D7F0 /* APIService.swift */,
 				F42ADE322831954600E1DE12 /* Constants.swift */,
+				F42ADE37283225E800E1DE12 /* NetworkingClient.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -135,6 +140,9 @@
 			dependencies = (
 			);
 			name = "Harry Potter";
+			packageProductDependencies = (
+				F42ADE352832255000E1DE12 /* Alamofire */,
+			);
 			productName = "Harry Potter";
 			productReference = F46F1DFB282D6D610079E65B /* Harry Potter.app */;
 			productType = "com.apple.product-type.application";
@@ -163,6 +171,9 @@
 				Base,
 			);
 			mainGroup = F46F1DF2282D6D610079E65B;
+			packageReferences = (
+				F42ADE342832255000E1DE12 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = F46F1DFC282D6D610079E65B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -191,6 +202,7 @@
 			files = (
 				F46F1E01282D6D610079E65B /* ContentView.swift in Sources */,
 				F4E9496928315E540032D7F0 /* APIService.swift in Sources */,
+				F42ADE38283225E800E1DE12 /* NetworkingClient.swift in Sources */,
 				F4E949702831633E0032D7F0 /* Wand.swift in Sources */,
 				F4E94973283163A50032D7F0 /* CharactersModel.swift in Sources */,
 				F46F1DFF282D6D610079E65B /* Harry_PotterApp.swift in Sources */,
@@ -399,6 +411,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F42ADE342832255000E1DE12 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F42ADE352832255000E1DE12 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F42ADE342832255000E1DE12 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F46F1DF3282D6D610079E65B /* Project object */;
 }
