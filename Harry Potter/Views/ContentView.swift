@@ -38,7 +38,6 @@ struct ContentView: View {
                         } label: {
                             Text("House Picker")
                         }
-                        .font(.title)
                         
                         Divider()
 
@@ -72,7 +71,7 @@ struct ContentView: View {
                             vm.filterCharactersByHouse(house: vm.houseSelection.rawValue)
                         } label: {
                             Text("Filter")
-                                .font(.title)
+                                .font(.title3)
                         }
                         
                         Divider()
@@ -83,7 +82,7 @@ struct ContentView: View {
                             vm.statusSelection = .All
                         } label: {
                             Text("Clear")
-                                .font(.title)
+                                .font(.title3)
                         }
                     }
                     .foregroundColor(.black)
