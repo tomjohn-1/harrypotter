@@ -117,7 +117,7 @@ struct ContentView: View {
             }
         }
         .task {
-            await vm.getData()
+//            await vm.getData()
             if !vm.filteredCharacters.isEmpty {
                 characterToShow = vm.filteredCharacters[0]
             }

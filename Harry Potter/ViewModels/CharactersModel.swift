@@ -20,7 +20,7 @@ class CharactersModel: ObservableObject {
     @Published var isLoading = true
     
     init() {
-//        alamoData()
+        alamoData()
     }
     
     func alamoData() {
@@ -48,6 +48,20 @@ class CharactersModel: ObservableObject {
                 
                 self.characters.sort { c1, c2 in
                     return c1.name < c2.name
+                }
+                
+                for c in self.characters {
+                    do {
+                        NetworkingClient.executeImage(c.image, completion: { data, error in
+                            
+                            guard error == nil, data != nil else {
+                                return
+                            }
+                            
+                            c.imageData = data!
+                            
+                        })
+                    }
                 }
                 
                 self.filteredCharacters = self.characters

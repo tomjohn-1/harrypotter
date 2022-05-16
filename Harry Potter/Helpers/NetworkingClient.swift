@@ -30,6 +30,23 @@ class NetworkingClient {
             }
             
         }
+    }
+    
+    static func executeImage(_ urlString: String, completion: @escaping (Data?, Error?) -> Void) {
         
+        let url = URL(string: urlString)
+        
+        guard url != nil else {
+            return
+        }
+        
+        AF.request(url!).validate().response { response in
+            
+            guard let data = response.data else {
+                return
+            }
+            
+            completion(data, nil)
+        }
     }
 }
