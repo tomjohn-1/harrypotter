@@ -20,7 +20,7 @@ class CharactersModel: ObservableObject {
     @Published var isLoading = true
     
     init() {
-        alamoData()
+//        alamoData()
     }
     
     func alamoData() {
@@ -31,6 +31,10 @@ class CharactersModel: ObservableObject {
         
         guard url != nil else {
             return
+        }
+        
+        defer {
+            isLoading.toggle()
         }
         
         NetworkingClient.execute(url!) { result, error in
